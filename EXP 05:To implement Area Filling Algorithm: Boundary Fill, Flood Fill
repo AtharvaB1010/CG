@@ -1,0 +1,25 @@
+#include <stdio.h> 
+#include <graphics.h> 
+#include<dos.h> 
+ 
+void boundaryfill(int x,int y,int f_c,int b_c) 
+{  	
+if (getpixel(x,y)!=b_c && getpixel(x,y)!=f_c) 
+ 	{ 
+    putpixel(x,y,f_c);  	
+ 	boundaryfill(x+1,y,f_c,b_c);  	 	boundaryfill(x,y+1,f_c,b_c);  	 	boundaryfill(x-1,y,f_c,b_c);  	 	boundaryfill(x,y-1,f_c,b_c); 
+ 	} 
+} 
+ Int main() 
+{ 
+ 	int gm,gd=DETECT,radius,x,y; 
+ printf("Enter x and y co-ordinates for cicle : "); 
+scanf("%d %d",&x,&y); 
+printf("Enter radius of the circle : "); 
+ 	scanf("%d",&radius);  	initgraph(&gd,&gm," ");  	
+circle(x,y,radius); 
+    rectangle(100,100,200,200);  	printf("Enter the value of x and y : ");  	scanf("%d %d",&x,&y);      	boundaryfill(x,y,5,15);  	
+delay(5000); 
+ 	closegraph();
+  	return 0; 
+} 
